@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
-import { loginUser, database, logoutUser } from "@/lib/appwrite";
+import { loginUser, database } from "@/lib/appwrite";
 import { Eye, EyeClosed } from "lucide-react";
 import { Query } from "appwrite";
 import { STATIC_DATA } from "@/constants/constants";
@@ -121,7 +121,7 @@ export default function LoginForm() {
               </motion.button>
             </div>
             <div className="mt-4 text-center text-sm">
-              Don't have an account?
+              Don&apos;t have an account?
               <Link
                 href="/signup"
                 className="text-white underline hover:text-gray-300 transition cursor-pointer"

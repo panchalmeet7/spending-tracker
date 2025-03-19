@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { account } from "@/lib/appwrite";
 import { useRouter } from "next/navigation";

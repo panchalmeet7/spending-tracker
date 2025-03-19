@@ -2,7 +2,6 @@ import { useTheme } from "next-themes";
 import { ReactNode, useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import TopNav from "./TopNavbar";
-import Content from "./Content";
 
 interface LayoutProps {
   children: ReactNode;

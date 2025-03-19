@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Calistoga } from "next/font/google";
 import "./globals.css";
+import ThemeProvider from "@/components/theme/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const calistoga = Calistoga({
@@ -22,9 +23,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${calistoga.variable}`}>
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
 }
-  
