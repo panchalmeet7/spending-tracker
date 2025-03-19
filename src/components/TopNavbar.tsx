@@ -1,25 +1,23 @@
-import { Bell, ChevronRight, LogOut } from "lucide-react";
-import React from "react";
-import ThemeToggle from "./theme/ThemeToggle";
+import { Bell, ChevronRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import { logoutUser } from "@/lib/appwrite";
-import { useRouter } from "next/navigation";
+import ThemeToggle from "./theme/ThemeToggle";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import UserProfile from "./UserProfile";
 
 interface BreadcrumbItem {
   label: string;
   href?: string;
 }
 export default function TopNav() {
-  const router = useRouter();
   const breadcrumbs: BreadcrumbItem[] = [
     { label: "UI", href: "#" },
     { label: "Dashboard", href: "#" },
   ];
-
-  const handleLogOut = async () => {
-    await logoutUser();
-    router.push("/login");
-  };
 
   return (
     <nav className="px-3 sm:px-6 flex items-center justify-between bg-white dark:bg-[#0F0F12] border-b border-gray-200 dark:border-[#1F1F23] h-full">
@@ -53,15 +51,24 @@ export default function TopNav() {
           <Bell className="h-4 w-4 sm:h-5 sm:w-5 text-gray-600 dark:text-gray-300" />
         </button>
         <ThemeToggle />
-        <button
-          type="button"
-          className="p-1.5 sm:p-2 hover:bg-gray-100 dark:hover:bg-[#1F1F23] rounded-full transition-colors cursor-pointer"
-          onClick={() => {
-            handleLogOut();
-          }}
-        >
-          <LogOut className="h-4 w-4 sm:h-5 sm:w-5 text-gray-600 dark:text-gray-300" />
-        </button>
+        <DropdownMenu>
+          <DropdownMenuTrigger className="focus:outline-none">
+            <Image
+              src="https://ferf1mheo22r9ira.public.blob.vercel-storage.com/avatar-01-n0x8HFv8EUetf9z6ht0wScJKoTHqf8.png"
+              alt="User avatar"
+              width={28}
+              height={28}
+              className="rounded-full ring-2 ring-gray-200 dark:ring-[#2B2B30] sm:w-8 sm:h-8 cursor-pointer"
+            />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            align="end"
+            sideOffset={8}
+            className="w-[280px] sm:w-80 bg-background border-border rounded-lg shadow-lg"
+          >
+            <UserProfile avatar="https://ferf1mheo22r9ira.public.blob.vercel-storage.com/avatar-01-n0x8HFv8EUetf9z6ht0wScJKoTHqf8.png" />
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </nav>
   );
