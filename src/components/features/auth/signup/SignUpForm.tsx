@@ -15,14 +15,17 @@ import Link from "next/link";
 import { createUser, database } from "@/lib/appwrite";
 import toast, { Toaster } from "react-hot-toast";
 import { STATIC_DATA } from "@/constants/constants";
+import { Loader2 } from "lucide-react";
 
 export default function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleSignUp = async (e: FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const user = await createUser({ email, password });
 
@@ -46,6 +49,8 @@ export default function SignUpForm() {
           color: "#fff",
         },
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -71,6 +76,7 @@ export default function SignUpForm() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  disabled={isLoading}
                 />
               </div>
               <div className="grid gap-2">
@@ -81,14 +87,27 @@ export default function SignUpForm() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
+                  disabled={isLoading}
                 />
               </div>
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-full bg-white text-black px-4 py-2 rounded-md font-semibold transition-all cursor-pointer"
+                whileHover={!isLoading ? { scale: 1.05 } : {}}
+                whileTap={!isLoading ? { scale: 0.9 } : {}}
+                disabled={isLoading}
+                className={`w-full px-4 py-2 rounded-md font-semibold transition-all cursor-pointer flex items-center justify-center gap-2 
+                  ${
+                    isLoading
+                      ? "bg-gray-200 cursor-not-allowed text-black"
+                      : "bg-white text-black"
+                  }`}
               >
-                Sign Up
+                {isLoading ? (
+                  <>
+                    <Loader2 className="animate-spin h-5 w-5" /> Signing Up...
+                  </>
+                ) : (
+                  "Sign Up"
+                )}
               </motion.button>
             </div>
             <div className="mt-4 text-center text-sm">
