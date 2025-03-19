@@ -38,8 +38,7 @@ export default function LoginForm() {
         response.documents[0].email === email &&
         response.documents[0].password === password
       ) {
-        const session = await loginUser(email, password);
-        console.log(session);
+        await loginUser(email, password);
         toast.success("Login Successful! 🥳");
         setTimeout(() => router.push("/dashboard"), 1500);
       }

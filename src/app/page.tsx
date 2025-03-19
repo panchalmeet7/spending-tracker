@@ -12,8 +12,7 @@ export default function Home() {
       try {
         await account.get(); // If session exists, user is logged in
         router.push("/dashboard");
-      } catch (error: any) {
-        console.log("No active session:", error.message);
+      } catch {
         router.push("/login");
       } finally {
         setIsLoading(false);
