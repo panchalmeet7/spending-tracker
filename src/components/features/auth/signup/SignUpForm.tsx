@@ -18,20 +18,25 @@ import { STATIC_DATA } from "@/constants/constants";
 import { Loader2 } from "lucide-react";
 
 export default function SignUpForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+
+  const handleChange = (e: any) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSignUp = async (e: FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     try {
+      const email = formData.email;
+      const password = formData.password;
       const user = await createUser({ email, password });
 
       await database.createDocument(
-        STATIC_DATA.databaseId, //databaseId
-        STATIC_DATA.dboUserCollectionId, //collectionId (dbo.users)
+        STATIC_DATA.databaseId,
+        STATIC_DATA.dboUserCollectionId,
         user.$id, // Unique document ID (primary key)
         {
           email,
@@ -72,9 +77,10 @@ export default function SignUpForm() {
                 <Input
                   id="email"
                   type="email"
+                  name="email"
                   placeholder="m@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={formData.email}
+                  onChange={(e) => handleChange(e)}
                   required
                   disabled={isLoading}
                 />
@@ -84,8 +90,9 @@ export default function SignUpForm() {
                 <Input
                   id="password"
                   type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  name="password"
+                  value={formData.password}
+                  onChange={(e) => handleChange(e)}
                   required
                   disabled={isLoading}
                 />

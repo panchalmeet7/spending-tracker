@@ -20,10 +20,13 @@ import { STATIC_DATA } from "@/constants/constants";
 
 export default function LoginForm() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const handleChange = (e: any) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
@@ -35,10 +38,10 @@ export default function LoginForm() {
       setIsLoading(true);
       const response = await fetchUserByEmail();
       if (
-        response.documents[0].email === email &&
-        response.documents[0].password === password
+        response.documents[0].email === formData.email &&
+        response.documents[0].password === formData.password
       ) {
-        await loginUser(email, password);
+        await loginUser(formData.email, formData.password);
         toast.success("Login Successful! 🥳");
         setTimeout(() => router.push("/dashboard"), 1500);
       }
@@ -60,7 +63,10 @@ export default function LoginForm() {
     const response = await database.listDocuments(
       STATIC_DATA.databaseId,
       STATIC_DATA.dboUserCollectionId,
-      [Query.equal("email", email), Query.equal("password", password)]
+      [
+        Query.equal("email", formData.email),
+        Query.equal("password", formData.password),
+      ]
     );
     return response;
   };
@@ -82,9 +88,10 @@ export default function LoginForm() {
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="abc@example.com"
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => handleChange(e)}
                   disabled={isLoading}
                 />
               </div>
@@ -101,9 +108,9 @@ export default function LoginForm() {
                 <div className="relative">
                   <Input
                     id="password"
+                    name="password"
                     type={showPassword ? "password" : "text"}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => handleChange(e)}
                     className="pr-10"
                     disabled={isLoading}
                   />
