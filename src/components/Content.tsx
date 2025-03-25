@@ -2,6 +2,7 @@ import { Wallet, CreditCard, Calendar } from "lucide-react";
 import React from "react";
 import AccountsCard from "./AccountsCard";
 import TransactionsCard from "./TransactionsCard";
+import CalculationCard from "./CalculationCard";
 
 export default function Content() {
   return (
@@ -26,13 +27,12 @@ export default function Content() {
           </div>
         </div>
       </div>
-
       <div className="bg-white dark:bg-[#0F0F12] rounded-xl p-6 flex flex-col items-start justify-start border border-gray-200 dark:border-[#1F1F23]">
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 text-left flex items-center gap-2">
           <Calendar className="w-3.5 h-3.5 text-zinc-900 dark:text-zinc-50" />
           Calculation
         </h2>
-        {/* <List03 /> */}
+        <CalculationCard />
       </div>
     </div>
   );

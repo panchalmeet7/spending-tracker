@@ -27,7 +27,7 @@ const ACCOUNTS: AccountItem[] = [
   {
     id: "2",
     title: "Checking Account (Axis Bank)",
-    description: "discretionary spending",
+    description: "Discretionary spending",
     balance: "$2,850.00",
     type: "checking",
   },
