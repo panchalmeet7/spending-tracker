@@ -21,41 +21,41 @@ const ACCOUNTS: AccountItem[] = [
     id: "1",
     title: "Salary Account (HDFC)",
     description: "Personal savings/investment account",
-    balance: "$8,459.45",
+    balance: "₹8,459.45",
     type: "savings",
   },
   {
     id: "2",
     title: "Checking Account (Axis Bank)",
     description: "Discretionary spending",
-    balance: "$2,850.00",
+    balance: "₹2,850.00",
     type: "checking",
   },
   {
     id: "3",
     title: "Savings Account (BOB)",
     description: "Fundamental expenses (fun)",
-    balance: "$3,000.00",
+    balance: "₹3,000.00",
     type: "savings",
   },
   {
     id: "4",
     title: "Investment Portfolio (M)",
     description: "Stock, ETFs & MFs",
-    balance: "$15,230.80",
+    balance: "₹15,230.80",
     type: "investment",
   },
   {
     id: "5",
     title: "Investment Portfolio (P)",
     description: "Stock & MFs",
-    balance: "$15,230.80",
+    balance: "₹15,230.80",
     type: "investment",
   },
 ];
 
 export default function AccountsCard({
-  totalBalance = "$26,540.25",
+  totalBalance = "₹26,540.25",
   accounts = ACCOUNTS,
   className,
 }: AccountsCardProps) {
