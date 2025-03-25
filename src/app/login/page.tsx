@@ -1,6 +1,6 @@
 "use client";
 import LoginForm from "@/components/features/auth/login/LoginForm";
-import Loading from "@/components/Loading"; // ✅ Add Loading Component
+import Loading from "@/components/Loading";
 import { account } from "@/lib/appwrite";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
