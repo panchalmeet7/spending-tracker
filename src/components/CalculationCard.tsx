@@ -1,57 +1,16 @@
 import { cn } from "@/lib/utils";
-import {
-  AlertCircle,
-  ArrowRight,
-  Calendar,
-  CheckCircle2,
-  LucideIcon,
-  Timer,
-  TrendingUp,
-  Wallet,
-} from "lucide-react";
+import { ArrowRight, Calendar, TrendingUp, Wallet } from "lucide-react";
 import React from "react";
-interface ListItem {
-  id: string;
-  title: string;
-  subtitle: string;
-  icon: LucideIcon;
-  iconStyle: string;
-  date: string;
-  time?: string;
-  amount?: string;
-  status: "pending" | "in-progress" | "completed";
-  progress?: number;
-}
+import { statusConfig, iconStyles } from "@/constants/constants";
+import { CalculationsDTO } from "@/interface/Calculation";
 
+//CalculationCard props and propsTypes
 interface CalculationCardProps {
-  items?: ListItem[];
+  items?: CalculationsDTO[];
   className?: string;
 }
 
-const iconStyles = {
-  savings: "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100",
-  investment: "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100",
-  debt: "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100",
-};
-
-const statusConfig = {
-  pending: {
-    icon: Timer,
-    class: "text-amber-600 dark:text-amber-400",
-    bg: "bg-amber-100 dark:bg-amber-900/30",
-  },
-  "in-progress": {
-    icon: AlertCircle,
-    class: "text-blue-600 dark:text-blue-400",
-    bg: "bg-blue-100 dark:bg-blue-900/30",
-  },
-  completed: {
-    icon: CheckCircle2,
-    class: "text-emerald-600 dark:text-emerald-400",
-    bg: "bg-emerald-100 dark:bg-emerald-900/30",
-  },
-};
-const ITEMS: ListItem[] = [
+const ITEMS: CalculationsDTO[] = [
   {
     id: "1",
     title: "Investments",

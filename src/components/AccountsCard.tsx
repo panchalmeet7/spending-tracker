@@ -1,22 +1,17 @@
+import React from "react";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight, CreditCard, QrCode, Wallet } from "lucide-react";
-import React from "react";
+import { AccountsDTO } from "@/interface/Accounts";
 
-interface AccountItem {
-  id: string;
-  title: string;
-  description?: string;
-  balance: string;
-  type: "savings" | "checking" | "investment" | "debt";
-}
-
+//AccountCard Props and PropsTypes
 interface AccountsCardProps {
   totalBalance?: string;
-  accounts?: AccountItem[];
+  accounts?: AccountsDTO[];
   className?: string;
 }
 
-const ACCOUNTS: AccountItem[] = [
+//Data
+const ACCOUNTS: AccountsDTO[] = [
   {
     id: "1",
     title: "Salary Account (HDFC)",

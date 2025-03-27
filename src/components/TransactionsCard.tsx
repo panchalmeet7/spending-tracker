@@ -1,40 +1,23 @@
+import { TransactionsDTO } from "@/interface/Transaction";
 import { cn } from "@/lib/utils";
 import {
   ArrowDownLeft,
   ArrowRight,
   ArrowUpRight,
   CreditCard,
-  LucideIcon,
   ShoppingCart,
   Wallet,
 } from "lucide-react";
 import React from "react";
 
-interface Transaction {
-  id: string;
-  title: string;
-  amount: string;
-  type: "incoming" | "outgoing";
-  category: string;
-  icon: LucideIcon;
-  timestamp: string;
-  status: "completed" | "pending" | "failed";
-}
-
+//TransactionCard Props and PropsTypes
 interface TransactionCardProps {
-  transactions?: Transaction[];
+  transactions?: TransactionsDTO[];
   className?: string;
 }
 
-// const categoryStyles = {
-//   shopping: "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100",
-//   food: "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100",
-//   transport: "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100",
-//   entertainment:
-//     "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100",
-// };
-
-const TRANSACTIONS: Transaction[] = [
+//Data
+const TRANSACTIONS: TransactionsDTO[] = [
   {
     id: "1",
     title: "Apple Store Purchase",
@@ -96,6 +79,7 @@ const TRANSACTIONS: Transaction[] = [
     status: "pending",
   },
 ];
+
 export default function TransactionsCard({
   transactions = TRANSACTIONS,
   className,
