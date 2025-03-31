@@ -113,7 +113,7 @@ export default function CalculationCard({
                   <div className="h-1.5 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-zinc-900 dark:bg-zinc-100 rounded-full"
-                      style={{ width: `₹{item.progress}%` }}
+                      style={{ width: `${item.progress}%` }}
                     />
                   </div>
                 </div>

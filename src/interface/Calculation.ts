@@ -10,5 +10,5 @@ export interface CalculationsDTO {
   time?: string;
   amount?: string;
   status: "pending" | "in-progress" | "completed";
-  progress?: number;
+  progress: number;
 }
