@@ -24,7 +24,6 @@ export default function AccountsCard({ className }: AccountsCardProps) {
       setIsLoading(true);
       const response = await fetchAllAccounts(10, 0);
       if (response != null) {
-        console.log(response.documents);
         if (response?.documents) {
           const formattedAccounts: AccountsDTO[] = response.documents.map(
             (doc) => ({

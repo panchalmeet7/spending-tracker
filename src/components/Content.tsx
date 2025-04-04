@@ -1,8 +1,8 @@
 import { Wallet, CreditCard, Calendar } from "lucide-react";
 import React from "react";
 import AccountsCard from "./AccountsCard";
-// import TransactionsCard from "./TransactionsCard";
-// import CalculationCard from "./CalculationCard";
+import TransactionsCard from "./TransactionsCard";
+import CalculationCard from "./CalculationCard";
 
 export default function Content() {
   return (
@@ -23,7 +23,7 @@ export default function Content() {
             Recent Transactions
           </h2>
           <div className="flex-1">
-            {/* <TransactionsCard className="h-full" /> */}
+            <TransactionsCard className="h-full" />
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@ export default function Content() {
           <Calendar className="w-3.5 h-3.5 text-zinc-900 dark:text-zinc-50" />
           Calculation
         </h2>
-        {/* <CalculationCard /> */}
+        <CalculationCard />
       </div>
     </div>
   );
